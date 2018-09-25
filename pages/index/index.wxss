@@ -17,6 +17,24 @@
   margin: 450rpx auto auto auto;
   background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/homeTree.png') no-repeat center center;
   background-size:100%;
+  position: relative;
+}
+.tree-gift{
+  position:absolute;
+  top:390rpx;
+width:100%;
+transform: translate3d(0,-240%,0);
+ -webkit-transform: translate3d(0,-240%,0);
+  /* opacity: 0; */
+  text-align: center;
+}
+.tree-gift-fixed{
+  /* transform: translate3d(0,-200%,0);
+ -webkit-transform: translate3d(0,-200%,0); */
+  /* bottom:120rpx; */
+}
+.tree-gift image{
+  width:110rpx;
 }
 .home-Notice{
   width:65rpx;
@@ -385,4 +403,108 @@ movable-area {
 }
 .textLeft{
   width: 240rpx;
+}
+
+.animated{-webkit-animation-fill-mode:both;animation-fill-mode:both}
+.animated.infinite{-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
+.animated.count2{
+  -webkit-animation-iteration-count:2;
+  animation-iteration-count:2
+}
+
+@-webkit-keyframes swing {
+	20% {
+		-webkit-transform: rotate(-14deg);
+		transform: rotate(-14deg)
+	}
+
+	40% {
+		-webkit-transform: rotate(14deg);
+		transform: rotate(14deg)
+	}
+
+	60% {
+		-webkit-transform: rotate(-5deg);
+		transform: rotate(-5deg)
+	}
+
+	80% {
+		-webkit-transform: rotate(5deg);
+		transform: rotate(5deg)
+	}
+
+	to {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+}
+
+@keyframes swing {
+	20% {
+		-webkit-transform: rotate(-14deg);
+		transform: rotate(-14deg)
+	}
+
+	40% {
+		-webkit-transform: rotate(14deg);
+		transform: rotate(14deg)
+	}
+
+	60% {
+		-webkit-transform: rotate(-5deg);
+		transform: rotate(-5deg)
+	}
+
+	80% {
+		-webkit-transform: rotate(5deg);
+		transform: rotate(5deg)
+	}
+
+	to {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+}
+
+.swing {
+  -webkit-animation-duration:1.5s;
+  animation-duration:1.5s;
+	-webkit-transform-origin: bottom center;
+	transform-origin: bottom center;
+	-webkit-animation-name: swing;
+	animation-name: swing
+}
+@-webkit-keyframes slideInDown {
+	0% {
+		-webkit-transform: translate3d(0,-240%,0);
+		transform: translate3d(0,-240%,0);
+		visibility: visible
+	}
+
+	to {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0)
+	}
+}
+
+@keyframes slideInDown {
+	0% {
+		-webkit-transform: translate3d(0,-240%,0);
+		transform: translate3d(0,-240%,0);
+		visibility: visible
+	}
+
+	to {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0)
+	}
+}
+
+.slideInDown {
+  -webkit-animation-duration:1s;
+  animation-duration:1s;
+	-webkit-animation-name: slideInDown;
+	animation-name: slideInDown;
+  animation-delay:1.5s;
+  -webkit-animation-delay:1.5s;
 }
