@@ -24,7 +24,11 @@
     <image wx:if="{{isStop}}"  src="../../img/action.png" class="an-c an-r an-t animated rotate" bindtap='onStopbgMusic'></image>
     <image wx:else src="../../img/stop.png" bindtap='onActionbgMusic'></image>
   </view> -->
-  <view class="home-tree"></view>
+  <view class="home-tree animated {{isAnimiate? 'swing':''}}">
+    <view class="tree-gift animated {{isAnimiate? 'tree-gift-fixed slideInDown':''}}" >
+      <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/tree-gift.png' mode='widthFix'></image>
+    </view>
+  </view>
    <movable-view x="{{50}}" y="{{50}}" direction="all">
       <view class="home-Notice" catchtap='showNoticeClicked' wx-if="{{hasNotice}}">
         <image src="../../img/Notice.png"></image>
