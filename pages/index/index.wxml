@@ -115,7 +115,7 @@
         </view>
         <view class="shakeBtnBox" wx:if="{{isDrawn}}">
           <view class="shakeBtn" bindtap="closeBindshakeBox">继续摇奖</view>
-          <view class="shakeBtn shakeBtnRight" catchtap='awardClicked'>查看奖品</view>
+          <view class="shakeBtn shakeBtnRight" catchtap='shakeBoxAwardClicked'>查看奖品</view>
         </view>
         <view class="shakeBtnBox" wx:else>
           <view class="shakeBtn" bindtap="closeBindshakeBox">我知道了</view>
@@ -134,6 +134,6 @@
 <view class="model-view-bg model-view-bg-c" wx:if='{{showMyNum}}' catchtap='showMyNumClicked'>
   <view class="my-award-filter flexC">
       <view class='content-c flexC'>没有摇奖次数了</view>
-      <view class='sureBtn flexC'>确定</view>
+      <view class='sureBtn flexC' catchtap='showMyNumClosed'>确定</view>
   </view>
 </view>

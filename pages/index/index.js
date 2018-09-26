@@ -44,8 +44,9 @@ Page({
     sufHint: '', // 结束提示
     actStauts: '',
     isDisplay: true,
-    shakeStartMusicSrc: '', // 中奖
-    shakeStopMusicSrc: '', // 未中奖
+    shakeStartMusicSrc: 'https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/win.mp3', // 中奖
+    shakeStopMusicSrc: 'https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/nowin.mp3', // 未中奖
+    skakeDefaultMusicSrc:'https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/wave.mp3',// 默认音乐
     audioCtx: '', // 音乐
     SignActivtyId: false, // 活动是否开始了
     isAcitivityEnd: false, //活动是否结束
@@ -299,76 +300,72 @@ Page({
     Tool.showErrMsg(r);
     r.addToQueue();
   },
-  showResult(n, req, num, isName) {
-    let that = this
+  showResult(n, req,isName) { 
+    this.data.isNumber = this.data.isNumber-1
     if (n == 1) {
-      that.setData({
-        isNumber: num,
+      this.setData({
         isShowModelTitle: '恭喜你，中奖啦',
-        isShakeBox: true,
         isMaterial: true,
         iscardZJL: false,
         isWzj: false,
         ishongbao: false,
-        isReduceNumber: true,
-        isNumberReduce: 'isNumberReduce',
         isMaterialUrl: req.responseObject.data.imgUrl,
-        isMaterialName: isName
+        isMaterialName: isName,
+        isDrawn: true
       })
     } else if (n == 2) {
-      that.setData({
-        isNumber: num,
+      this.setData({ 
         isShowModelTitle: '恭喜你，中奖啦',
-        isShakeBox: true,
         iscardZJL: true,
         ishongbao: false,
         isWzj: false,
         isMaterial: false,
-        isReduceNumber: true,
-        isNumberReduce: 'isNumberReduce',
         iscardUrl: req.responseObject.data.imgUrl,
-        iscardName: isName
+        iscardName: isName,
+        isDrawn: true
       })
     } else if (n == 3) {
-      that.setData({
-        isNumber: num,
+      this.setData({
         isShowModelTitle: '恭喜你，中奖啦',
-        isShakeBox: true,
         ishongbao: true,
         isMaterial: false,
         iscardZJL: false,
         isWzj: false,
-        isReduceNumber: true,
-        isNumberReduce: 'isNumberReduce',
         ishongbaoUrl: req.responseObject.data.imgUrl,
         ishongbaoName: isName
       })
     } else {
-      // that.data.audioCtx = wx.createAudioContext('myAudioShake');
-      // that.data.audioCtx.setSrc(that.data.shakeStopMusicSrc);
-      // that.data.audioCtx.play();
-      that.setData({
-        isNumber: num,
+      this.setData({
         isShowModelTitle: '很遗憾，未中奖',
-        isShakeBox: true,
         isWzj: true,
         iscardZJL: false,
         ishongbao: false,
-        isMaterial: false,
-        isReduceNumber: true,
-        isNumberReduce: 'isNumberReduce',
+        isMaterial: false,        
         isDrawn: false
       })
     }
-    that.setData({
+    if(n>=3){
+      this.setMusicSrc(this.data.shakeStartMusicSrc)
+    }else{
+      this.setMusicSrc(this.data.shakeStopMusicSrc)
+    }
+    this.setData({
+      isShakeBox: true,
+      isNumber: this.data.isNumber,
+      isNumberReduce: 'isNumberReduce',
+      isReduceNumber: true,
       isAnimiate: false
     })
-    that.ani()
+    this.ani()
+  },
+  setMusicSrc(musicSrc){
+    this.data.audioCtx = wx.createAudioContext('myAudioShake');
+    this.data.audioCtx.setSrc(musicSrc);
+    this.data.audioCtx.play();
   },
   onAccelerometerChange(acceleration) { // 监听摇一摇
-    let that = this;
-    let x = 0, y = 0, z = 0
-    let { lastX, lastY, lastZ, lastTime } = that.data.lastSpeed
+    let that = this,x = 0, y = 0, z = 0
+    let { lastX, lastY, lastZ, lastTime } = this.data.lastSpeed
     let shakeSpeed = 110; //设置阈值
     let nowTime = new Date().getTime(); //记录当前时间
     //如果这次摇的时间距离上次摇的时间有一定间隔 才执行
@@ -380,99 +377,84 @@ Page({
       z = acceleration.z; //获取z轴数值，z轴垂直于地面，向上为正
       //计算 公式的意思是 单位时间内运动的路程，即为我们想要的速度
       let speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
-      if (speed > shakeSpeed && that.data.isAjax) {
-        //如果计算出来的速度超过了阈值，那么就算作用户成功摇一摇
-        if (!that.data.SignActivtyId) { // 活动未开启
-          Tool.showAlert(that.data.preHint)
-          wx.stopAccelerometer();
+      if (speed > shakeSpeed && this.data.isAjax) { // 如果计算出来的速度超过了阈值，那么就算作用户成功摇一摇
+        
+        wx.stopAccelerometer()
+        
+        let callBack = ()=>{
+          console.log(111111)
+          wx.startAccelerometer();
+        }
+        if (!this.data.SignActivtyId) { // 活动未开启
+          Tool.showAlert(this.data.preHint, callBack)
           return
         }
-        if (that.data.isAcitivityEnd) { // 活动已结束
-          Tool.showAlert(that.data.sufHint)
-          wx.stopAccelerometer();
+        if (this.data.isAcitivityEnd) { // 活动已结束
+          Tool.showAlert(this.data.sufHint, callBack)
           return
         }
-        if (that.data.isAcitivityPause) {
-          Tool.showAlert('活动已暂停')
-          wx.stopAccelerometer();
+        if (this.data.isAcitivityPause) {
+          Tool.showAlert('活动已暂停', callBack)
           return
         }
-        if (that.data.isNumber <= 0) {
-          //Tool.showAlert('没有摇奖次数了')
-          that.showMyNumClicked()
-          wx.stopAccelerometer();
+        if (this.data.isNumber <= 0) {
+          this.showMyNumClicked(callBack)
           return
         }
         // 一次cookie 都没有表示从未注册登录过
         let isLogin = Storage.getUserCookie() || false
         if (!isLogin) {
-          Tool.showAlert('请先登录')
-          wx.stopAccelerometer();
+          Tool.showAlert('请先登录', callBack)
+        
           return
         }
-        that.setData({
+        this.setData({
           isAjax: false
         })
-        wx.stopAccelerometer()
+       
         wx.showLoading({
           title: '摇奖中...'
         })
+        this.setMusicSrc(this.data.skakeDefaultMusicSrc)
         let data = {
           activityId: Storage.getActivityId() || ''
         };
         let r = RequestFactory.shakeStartRequest(data);
         r.finishBlock = (req) => {
-          that.data.audioCtx = wx.createAudioContext('myAudioShake');
-          that.data.audioCtx.setSrc(that.data.shakeStartMusicSrc);
-          that.data.audioCtx.play();
-          let num = that.data.isNumber--
+          // let num = this.data.isNumber--
           let isName = ''
           let Dname = req.responseObject.data.dictionaryName == null ? '' : req.responseObject.data.dictionaryName
           isName = '"' + Dname + '"' + req.responseObject.data.awardName
           if (req.responseObject.data.pType == 1 || req.responseObject.data.pType == '1') { // 实物
             setTimeout(function () {
-              that.showResult(1, req, num, isName)
+              that.showResult(1, req,isName)
             }, 2900)
           } else if (req.responseObject.data.pType == 2 || req.responseObject.data.pType == '2') { // 字卡
             setTimeout(function () {
-              that.showResult(2, req, num, isName)
+              that.showResult(2, req, isName)
             }, 2400)
           } else if (req.responseObject.data.pType == 3 || req.responseObject.data.pType == '3') { // 红包
             setTimeout(function () {
-              that.showResult(3, req, num, isName)
+              that.showResult(3, req, isName)
             }, 2400)
           }
-
-          that.getWinnerRequest()  // 中奖一次以后更新中奖名单
+          this.getWinnerRequest()  // 中奖一次以后更新中奖名单
         };
         r.failBlock = (req) => {
-          let start = () => {
-            wx.startAccelerometer();
-          }
-          if (that.data.isNumber == 0) return
-          let num = that.data.isNumber--
+          if (this.data.isNumber == 0) return
+          // let num = this.data.isNumber--
           if (req.responseObject.code === 600) {
-            that.data.audioCtx = wx.createAudioContext('myAudioShake');
-            that.data.audioCtx.setSrc(that.data.shakeStopMusicSrc);
-            that.data.audioCtx.play();
             setTimeout(function () {
-              that.showResult(4, req, num, '')
+              that.showResult(4, req, '')
             }, 2400)
           } else {
-            Tool.showAlert(req.responseObject.msg, start)
+            Tool.showAlert(req.responseObject.msg, callBack)
           }
         };
         r.completeBlock = (req) => {
-          let num = that.data.isNumber--
-          // this.setData({
-          //   isNumber:num
-          // })
           wx.hideLoading()
           wx.stopAccelerometer();
-          // setTimeout(function () {
-          //   that.showResult(4, req, num, '')
-          // }, 2400)
-          that.setData({
+          this.setData({
             isAjax: true,
             isAnimiate: true
           })
@@ -645,12 +627,18 @@ Page({
     }
   },
   awardClicked() { // 跳转我的奖品
+    // console.log(this.data.isNumber)
     this.setData({
+      // isNumber: this.data.isNumber,
       isShakeBox: false
     })
     if (this.getIsLogin()) {
       Tool.navigateTo('/pages/my/my')
     }
+  },
+  shakeBoxAwardClicked(){
+    this.closeBindshakeBox()
+    this.awardClicked()
   },
   didLogin() { // 获取 token
     this.selectComponent("#topBar").getUserId()
@@ -734,22 +722,17 @@ Page({
     Storage.setWxUserInfo(userInfo)
     this.requetLogin()
   },
-  showMyNumClicked(e) {
+  showMyNumClicked(callBack) {
     this.setData({
       showMyNum: !this.data.showMyNum
     })
-    wx.stopAccelerometer();
+  },
+  showMyNumClosed(){
+    this.showMyNumClicked()
+    wx.startAccelerometer()
   },
   onShow: function () { // 进行摇一摇
-    // this.toAccelerometer(true)
-    wx.onAccelerometerChange((e) => {
-      let pages = getCurrentPages()
-      let currentPage = pages[pages.length - 1]
-      // console.log(currentPage.onAccelerometerChange)
-      if (currentPage.onAccelerometerChange) {
-        currentPage.onAccelerometerChange(e)
-      }
-    })
+    wx.startAccelerometer()
   },
   onHide: function () {
     wx.stopAccelerometer()

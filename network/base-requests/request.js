@@ -24,9 +24,9 @@ export default class Request {
       //     this.baseUrl = this.baseUrl + '8002';
       // }
 
-      this.baseUrl = 'https://ttdb-test.dnvhot.tech';
+      // this.baseUrl = 'https://ttdb-test.dnvhot.tech';
 
-      // this.baseUrl = 'https://ttdb.dnvhot.tech';
+      this.baseUrl = 'https://ttdb.dnvhot.tech';
 
       return this.baseUrl
   }

@@ -259,7 +259,7 @@ transform: translate3d(0,-240%,0);
   position: absolute;
 }
 .swiper_container {
- height: 329rpx;
+ height: 332rpx;
 }
 .swiper_item {
   font-size: 25rpx;

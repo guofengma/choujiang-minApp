@@ -16,6 +16,13 @@ App({
     global.RequestFactory = RequestFactory;
     this.getSystemInfo()
     this.wxLogin()
+    wx.onAccelerometerChange((e) => {
+      let pages = getCurrentPages()
+      let currentPage = pages[pages.length - 1]
+      if (currentPage.onAccelerometerChange) {
+        currentPage.onAccelerometerChange(e)
+      }
+    })
   },
   globalData: {
     userInfo: null,
