@@ -5,7 +5,7 @@
 <sign-in id='sign' 
     isTrue='{{isTrue}}' 
     bind:closeView='closeView' 
-    SignActivtyId='{{SignActivtyId}}' 
+    isAcitivityStart='{{isAcitivityStart}}' 
     isAuthorize = "{{isAuthorize}}"
     visiable="{{visiable}}"
     isAcitivityEnd ='{{isAcitivityEnd}}'
@@ -20,10 +20,6 @@
 <movable-area>
 <!-- {{isNotice||isFixed?'fixed':''}}-->
 <view class="home-page"  >
-  <!-- <view class="myAudio">
-    <image wx:if="{{isStop}}"  src="../../img/action.png" class="an-c an-r an-t animated rotate" bindtap='onStopbgMusic'></image>
-    <image wx:else src="../../img/stop.png" bindtap='onActionbgMusic'></image>
-  </view> -->
   <view class="home-tree animated {{isAnimiate? 'swing':''}}">
     <view class="tree-gift animated {{isAnimiate? 'tree-gift-fixed slideInDown':''}}" >
       <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/tree-gift.png' mode='widthFix'></image>
@@ -93,27 +89,21 @@
   <view class="model-view-bg" catchtouchmove='catchTouchMove' wx:if="{{isShakeBox}}">
       <view class="shakeBox">
         <view class="shakeHeaderTitle">
-          {{isShowModelTitle}}
+          {{winningType==0? "很遗憾，未中奖":"恭喜你，中奖啦"}}
         </view>
         <view class="shakeContent">
-           <view class="shakeWzj" wx:if="{{isWzj}}">
+          <!-- 未中奖 -->
+          <view class="shakeWzj" wx:if="{{winningType==0}}">
             <image src="../../img/wzj.png"></image>
             <view class="shakeText font-30">别灰心、么么哒、再接再厉！</view>
-           </view>
-           <view class="cardZJL" wx:if="{{iscardZJL}}"> <!--字卡-->
-              <image src="{{iscardUrl}}"></image>
-              <view class="shakeText ellipsis" >{{iscardName}}</view>
-           </view>
-           <view class="hongbao" wx:if="{{ishongbao}}"> <!--红包-->
-              <image src="{{ishongbaoUrl}}"></image>
-              <view class="shakeText ellipsis" >{{ishongbaoName}}</view>
-           </view>
-           <view class="Material" wx:if="{{isMaterial}}"> <!--实物-->
-              <image src="{{isMaterialUrl}}"></image>
-              <view class="shakeText ellipsis">{{isMaterialName}}</view>
-           </view>
+          </view>
+          <!-- 中奖 -->
+          <view wx:else class="{{winningType==1? 'Material':winningType==2? 'cardZJL':'hongbao'}} ">
+            <image src="{{showGiftiImgUrl}}"></image>
+            <view class="shakeText ellipsis">{{awardName}}</view>
+          </view>
         </view>
-        <view class="shakeBtnBox" wx:if="{{isDrawn}}">
+        <view class="shakeBtnBox" wx:if="{{winningType>0}}">
           <view class="shakeBtn" bindtap="closeBindshakeBox">继续摇奖</view>
           <view class="shakeBtn shakeBtnRight" catchtap='shakeBoxAwardClicked'>查看奖品</view>
         </view>
@@ -128,12 +118,3 @@
 
 <!--适配iPhone X  -->
 <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />
-
-<!-- 没有中奖次数的弹框 -->
-
-<view class="model-view-bg model-view-bg-c" wx:if='{{showMyNum}}' catchtap='showMyNumClicked'>
-  <view class="my-award-filter flexC">
-      <view class='content-c flexC'>没有摇奖次数了</view>
-      <view class='sureBtn flexC' catchtap='showMyNumClosed'>确定</view>
-  </view>
-</view>

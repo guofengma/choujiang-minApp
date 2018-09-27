@@ -32,7 +32,7 @@ export default class Request {
   }
   constructor(bParam) {
       //request自己控制loading提示
-      this.manageLoadingPrompt = true;
+      this.manageLoadingPrompt = false;
 
       this.baseUrl = this.getBaseUrl(bParam)
 

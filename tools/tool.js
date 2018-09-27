@@ -712,7 +712,7 @@ export default class Tool {
 
     static loginOpt(req){
       // 获取 cookies
-      let cookies = req.header['Set-Cookie']
+      let cookies = req.header['Set-Cookie'] || req.header['set-cookie'] || req.header['Set-cookie'] || req.header['set-Cookie'] 
       if (cookies) this.formatCookie(cookies)
       global.Storage.setUserAccountInfo(req.responseObject.data)
       global.Storage.setWxOpenid(req.responseObject.data.openId)

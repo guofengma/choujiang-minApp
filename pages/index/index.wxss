@@ -22,17 +22,12 @@
 .tree-gift{
   position:absolute;
   top:390rpx;
-width:100%;
-transform: translate3d(0,-240%,0);
- -webkit-transform: translate3d(0,-240%,0);
-  /* opacity: 0; */
+  width:100%;
+  transform: translate3d(0,-240%,0);
+  -webkit-transform: translate3d(0,-240%,0);
   text-align: center;
 }
-.tree-gift-fixed{
-  /* transform: translate3d(0,-200%,0);
- -webkit-transform: translate3d(0,-200%,0); */
-  /* bottom:120rpx; */
-}
+
 .tree-gift image{
   width:110rpx;
 }
@@ -125,7 +120,7 @@ transform: translate3d(0,-240%,0);
   width: 470rpx;
   height: 329rpx;
   margin: 0 auto;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 .winners-content .text{
@@ -315,6 +310,9 @@ movable-area {
   color: #ffec00;
 
 }
+.textLeft{
+  width: 240rpx;
+} 
 .cishu{
   animation:anim1 2s linear infinite;
   -moz-animation:anim1 2s linear infinite; /* Firefox */
@@ -379,31 +377,7 @@ movable-area {
   50% {top: 30px;opacity: 1}
   100%{top: -30px;opacity: 1}
 }
-.model-view-bg-c{
-  background-color: transparent;
-  z-index: 99;
-}
-.my-award-filter{
-  width:400rpx;
-  background: #fff;
-  font-size: 30rpx;
-  height:200rpx;
-  justify-content: space-between;
-  border-radius: 10rpx;
-  overflow: hidden;
-  border:1rpx solid #ddd;
-}
-.content-c{
-  height: 120rpx;
-}
-.sureBtn{
-  height: 80rpx;
-  background: #ddd;
-  width: 100%;
-}
-.textLeft{
-  width: 240rpx;
-}
+
 
 .animated{-webkit-animation-fill-mode:both;animation-fill-mode:both}
 .animated.infinite{-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}

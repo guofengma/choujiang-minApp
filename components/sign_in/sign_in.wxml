@@ -63,28 +63,28 @@
                 </view>
                 <!--控制月份日历输出-->
             </view>
-            <view class="text-center"  wx:if="{{signtype=='1' && SignActivtyId && !isAcitivityEnd && !isAcitivityPause }}">
+            <view class="text-center"  wx:if="{{signtype=='1' && isAcitivityStart && !isAcitivityEnd && !isAcitivityPause }}">
               <!-- 活动已经开始 未签到 -->
               
               <button class='btn-qiandao' wx:if='{{!isAuthorize&&!visiable}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">签到</button>
               <button wx:elif='{{!isAuthorize&&visiable}}' open-type="getUserInfo" class='btn-qiandao' bindgetuserinfo="agreeGetUser" lang="zh_CN" data-index='{{1}}'>签到</button>
               <button wx:else class="btn-qiandao"  bindtap="sign_start" >签到</button>
             </view>
-            <view class="text-center"  wx:elif="{{signtype=='2' && SignActivtyId &&!isAcitivityEnd && !isAcitivityPause }}">
+            <view class="text-center"  wx:elif="{{signtype=='2' && isAcitivityStart &&!isAcitivityEnd && !isAcitivityPause }}">
               <!-- 活动已经开始 已签到 -->
               <button class="btn-qiandao1" bindtap="sign_end" >已签到</button>
             </view>
-            <view class="text-center"  wx:elif="{{!SignActivtyId && !isAcitivityEnd}}">
+            <view class="text-center"  wx:elif="{{!isAcitivityStart && !isAcitivityEnd}}">
               <!-- 活动未开始 未结束-->
               <button class="btn-qiandao1" >未开始</button>
             </view>
 
-             <view class="text-center"  wx:elif="{{SignActivtyId && isAcitivityEnd}}">
+             <view class="text-center"  wx:elif="{{isAcitivityStart && isAcitivityEnd}}">
               <!-- 活动已开始 但结束 -->
               <button class="btn-qiandao1" >已结束</button>
             </view>
 
-             <view class="text-center"  wx:elif="{{SignActivtyId && !isAcitivityEnd && isAcitivityPause}}">
+             <view class="text-center"  wx:elif="{{isAcitivityStart && !isAcitivityEnd && isAcitivityPause}}">
               <!-- 活动已开始 未结束 已暂停 -->
               <button class="btn-qiandao1" >暂停中</button>
             </view>

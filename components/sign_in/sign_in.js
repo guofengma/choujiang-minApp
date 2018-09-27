@@ -5,7 +5,7 @@ let { Tool, RequestFactory, Storage } = global
 Component({
   properties: {
     isTrue: Boolean, // 是否显示日历
-    SignActivtyId: Boolean,// 活动是否开始
+    isAcitivityStart: Boolean,// 活动是否开始
     isAuthorize: Boolean,
     visiable: Boolean,
     isAcitivityEnd: Boolean, // 活动是否结束

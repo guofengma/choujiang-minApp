@@ -9,7 +9,7 @@ Component({
       isTrue:Boolean,
       isAuthorize: Boolean,
       visiable: Boolean,
-      SignActivtyId: Boolean,
+      isAcitivityStart: Boolean,
       tipStart: String,
       startTime: Number,
       endTime: Number,
