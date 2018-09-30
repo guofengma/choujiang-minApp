@@ -20,10 +20,16 @@
 <movable-area>
 <!-- {{isNotice||isFixed?'fixed':''}}-->
 <view class="home-page"  >
-  <view class="home-tree animated {{isAnimiate? 'swing':''}}">
-    <view class="tree-gift animated {{isAnimiate? 'tree-gift-fixed slideInDown':''}}" >
-      <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/tree-gift.png' mode='widthFix'></image>
-    </view>
+  <image src="/img/homePage.png" class="home-page-bg"></image>
+  <view class="home-tree animated">
+    <image src='/img/shu.png' class="tree-animate-item tree"></image>
+    <image src='/img/coin.png' class='tree-animate-item coin coin1 '></image>
+    <image src='/img/coin1.png' class='tree-animate-item coin coin2 '></image>
+    <image src='/img/coin2.png' class='tree-animate-item coin coin3 '></image>
+    <image src='/img/coin3.png' class='tree-animate-item coin coin4 '></image>
+    <image src='/img/liwu2.png' class='tree-animate-item gift gift2 {{isAnimiate? "swing":""}}'></image>
+    <image src='/img/liwu1.png' class='tree-animate-item gift gift1 {{isAnimiate? "swing":""}}'></image>
+    <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/tree-gift.png' mode='widthFix' class='tree-animate-item gift gift3 {{isAnimiate? "slideInDown":""}}'></image>
   </view>
    <movable-view x="{{50}}" y="{{50}}" direction="all">
       <view class="home-Notice" catchtap='showNoticeClicked' wx-if="{{hasNotice}}">
