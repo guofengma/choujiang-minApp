@@ -3,10 +3,17 @@
   position: relative;
   width: 750rpx;
   height: 1880rpx;
-  background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/homePage.png') no-repeat center center;
-  background-size:100%; 
+  /* background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/homePage.png') no-repeat center center;
+  background-size:100%;  */
   overflow: hidden;
   padding-bottom: 89rpx;
+}
+.home-page-bg{
+  width:750rpx;
+  height:1880rpx;
+  position:absolute;
+  top:0;
+  left:0;
 }
 .fixed{
   position: fixed
@@ -15,17 +22,57 @@
   width: 690rpx;
   height: 660rpx;
   margin: 450rpx auto auto auto;
-  background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/homeTree.png') no-repeat center center;
-  background-size:100%;
+  /* background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/homeTree.png') no-repeat center center;
+  background-size:100%; */
   position: relative;
 }
-.tree-gift{
+.tree-animate-item {
+  position: absolute;
+  transition: all 1.5s;
+}
+.tree-animate-item.tree{
+  width: 690rpx;
+  height: 660rpx;
+  top:0;
+  left:0;
+}
+.tree-animate-item.coin {
+  width: 56rpx;
+  height: 56rpx;
+}
+.tree-animate-item.coin1{
+  top:280rpx;
+  left:200rpx
+}
+.tree-animate-item.coin2{
+  top:50rpx;
+  left:185rpx;
+}
+.tree-animate-item.coin3{
+  top:90rpx;
+  right:220rpx;
+}
+.tree-animate-item.coin4{
+  bottom:350rpx;
+  right:72rpx;
+}
+.tree-animate-item.gift{
+  width: 114rpx;
+  height: 132rpx;
+}
+.tree-animate-item.gift1{
+  top:171rpx;
+  right:155rpx;
+}
+.tree-animate-item.gift2{
+  top:128rpx;
+  left:152rpx;
+}
+.tree-animate-item.gift3{
   position:absolute;
-  top:390rpx;
-  width:100%;
-  transform: translate3d(0,-240%,0);
-  -webkit-transform: translate3d(0,-240%,0);
-  text-align: center;
+  top:20rpx;
+  left:294rpx;
+  z-index: 1;
 }
 
 .tree-gift image{
@@ -388,23 +435,23 @@ movable-area {
 
 @-webkit-keyframes swing {
 	20% {
-		-webkit-transform: rotate(-14deg);
-		transform: rotate(-14deg)
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
 	40% {
-		-webkit-transform: rotate(14deg);
-		transform: rotate(14deg)
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
 	}
 
 	60% {
-		-webkit-transform: rotate(-5deg);
-		transform: rotate(-5deg)
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
 	80% {
-		-webkit-transform: rotate(5deg);
-		transform: rotate(5deg)
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
 	}
 
 	to {
@@ -415,23 +462,23 @@ movable-area {
 
 @keyframes swing {
 	20% {
-		-webkit-transform: rotate(-14deg);
-		transform: rotate(-14deg)
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
 	40% {
-		-webkit-transform: rotate(14deg);
-		transform: rotate(14deg)
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
 	}
 
 	60% {
-		-webkit-transform: rotate(-5deg);
-		transform: rotate(-5deg)
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
 	80% {
-		-webkit-transform: rotate(5deg);
-		transform: rotate(5deg)
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
 	}
 
 	to {
@@ -441,44 +488,139 @@ movable-area {
 }
 
 .swing {
-  -webkit-animation-duration:1.5s;
+  -webkit-animation-duration: 1.5s;
   animation-duration:1.5s;
-	-webkit-transform-origin: bottom center;
-	transform-origin: bottom center;
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
 	-webkit-animation-name: swing;
 	animation-name: swing
 }
 @-webkit-keyframes slideInDown {
-	0% {
-		-webkit-transform: translate3d(0,-240%,0);
-		transform: translate3d(0,-240%,0);
-		visibility: visible
+  0% {
+    top:20rpx;
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
+	}
+  12% {
+    top:20rpx;
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
-	to {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0)
+	24% {
+    top:20rpx;
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
+	}
+
+	36% {
+    top:20rpx;
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
+	}
+
+	48% {
+    top:20rpx;
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
+	}
+
+	60% {
+    top:20rpx;
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+
+  90% {
+    top: 385rpx;
+    -webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+  }
+	
+	100% {
+		top: 385rpx;
+    -webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
 	}
 }
 
 @keyframes slideInDown {
-	0% {
-		-webkit-transform: translate3d(0,-240%,0);
-		transform: translate3d(0,-240%,0);
-		visibility: visible
+	12% {
+    top:20rpx;
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
 	}
 
-	to {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0)
+	24% {
+    top:20rpx;
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
+	}
+
+	36% {
+    top:20rpx;
+		-webkit-transform: rotate(-18deg);
+		transform: rotate(-18deg)
+	}
+
+	48% {
+    top:20rpx;
+		-webkit-transform: rotate(18deg);
+		transform: rotate(18deg)
+	}
+
+	60% {
+    top:20rpx;
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+	}
+	
+  90% {
+    top: 385rpx;
+    -webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
+  }
+
+	100% {
+		top: 385rpx;
+    -webkit-transform: rotate(0deg);
+		transform: rotate(0deg)
 	}
 }
 
 .slideInDown {
-  -webkit-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration:2.5s;
+  animation-duration:2.5s;
 	-webkit-animation-name: slideInDown;
 	animation-name: slideInDown;
-  animation-delay:1.5s;
-  -webkit-animation-delay:1.5s;
+}
+
+
+@-webkit-keyframes coinX {
+  
+  50% {
+    transform: translateX(87rpx);
+  }
+  
+}
+@-webkit-keyframes coinY {
+  50% {
+    transform: translateY(10rpx);
+  }  
+}
+@keyframes coinX {
+  
+  50% {
+    transform: translateX(87rpx);
+  }
+  
+}
+@keyframes coinY {
+  50% {
+    transform: translateY(10rpx);
+  }
+}
+.animateCoin {
+  -webkit-animation: coinX 0.75s 2 cubic-bezier(0.3, 0.27, 0.07, 1.64),coinY 0.75s 2 cubic-bezier(0.3, 0.27, 0.07, 1.64);
+	animation: coinX 0.75s 2 cubic-bezier(0.3, 0.27, 0.07, 1.64),coinY 0.75s 2 cubic-bezier(0.3, 0.27, 0.07, 1.64);
 }
