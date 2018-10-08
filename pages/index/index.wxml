@@ -21,7 +21,7 @@
 <!-- {{isNotice||isFixed?'fixed':''}}-->
 <view class="home-page"  >
   <view class="home-tree animated {{isAnimiate? 'swing':''}}">
-    <view class="tree-gift animated {{isAnimiate? 'tree-gift-fixed slideInDown':''}}" >
+    <view class="tree-gift animated {{isAnimiate? 'tree-gift-fixed  slideInDown':''}}" >
       <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/tree-gift.png' mode='widthFix'></image>
     </view>
   </view>
