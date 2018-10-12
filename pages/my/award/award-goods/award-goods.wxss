@@ -2,7 +2,8 @@
 
 .award-goods-page{
   padding-bottom: 110rpx; 
-  height:calc(100% - 260rpx);
+  /* height:calc(100% - 260rpx); */
+  height: 100%;
   margin-top: 170rpx;
   overflow: hidden;
 }
@@ -38,7 +39,8 @@
 .sub-bar,.sub-bar-x{
   height: 88rpx;
   position: fixed;
-  bottom: 101rpx;
+  /* bottom: 101rpx; */
+  bottom: 0rpx;
   left: 0;
   width: 100%;
   border-bottom: 1rpx solid #eee;

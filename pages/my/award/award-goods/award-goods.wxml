@@ -7,11 +7,11 @@
   <!-- </view> -->
   <scroll-view scroll-y class='scroll' wx:if='{{lists.length>0}}' bindscrolltolower='onScroll'>
     <block wx:for='{{lists}}' wx:key='unique'>
-      <view class='cell-content'>
+      <view class='cell-content' catchtap='chooseClicked' data-index='{{index}}'>
         <view class='cell-title red flexR-sb grayBg'>中奖号码:{{item.securitycode}} {{item.createTime}}</view>
         <view class='content whiteBg flexR-sb boxSize'>
           <view class='left'>
-             <image wx:if='{{item.had_receive==2}}' src='{{item.isSelect?  "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix' class='img' catchtap='chooseClicked' data-index='{{index}}'></image> 
+             <image wx:if='{{item.had_receive==2}}' src='{{item.isSelect?  "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix' class='img' ></image> 
             <text wx:else class='tips'>已提交</text>
           </view>
           <view class='right flexR-sb'>
@@ -33,6 +33,7 @@
     <view class='redBg sub-btn fr flexR font-26' catchtap='submitClicked' >提交</view>
   </view>
 </view>
-<bottom-bar index="0"/>
+<!-- 要修改样式 -->
+<!-- <bottom-bar index="0"/> -->
 
 

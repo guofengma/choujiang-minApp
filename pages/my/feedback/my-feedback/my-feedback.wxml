@@ -5,9 +5,9 @@
       <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">加急处理中</view>
       <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">客服已处理</view>
   </scroll-view>
-  <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='onScroll'>
+  <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='onScroll' wx:if='{{lists.length>0}}'>
     <!--class type1 客服已处理 type2 加速处理中  -->
-    <block wx:for='{{lists}}' wx:key='unique'>
+    <block  wx:for='{{lists}}' wx:key='unique'>
         <view class='feedback-content flexR-sb {{item.className}}' >
           <view class='left'></view>
           <view class='right'>
@@ -27,6 +27,10 @@
             </view>
           </view>
         </view>
-    </block> 
+    </block>
   </scroll-view>
+  <view  class='no-result flexC' wx:else>
+      <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/icon_03.png' mode='widthFix'></image>
+      <view class='font-26 gray'>暂无问题哦~</view>
+  </view>
 </view>

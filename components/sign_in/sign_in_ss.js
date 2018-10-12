@@ -49,19 +49,20 @@ var yang_date = {
                 if (day == 1) {
                   aMonth[0][d].num = 1
                   aMonth[0][d].title = '首次签到'
+                } else if (day == 3) {
+                  aMonth[0][d].num = 2
+                  aMonth[0][d].title = '连续签到3天'
                 } else if (day == 7) {
                   aMonth[0][d].num = 3
                   aMonth[0][d].title = '连续签到7天'
-                } else if (day == 15) {
-                  aMonth[0][d].num = 5
-                  aMonth[0][d].title = '连续签到15天'
-                } else if (day ==30) {
-                  aMonth[0][d].num = 7
-                  aMonth[0][d].title = '连续签到30天'
-                } else if (day>30){
-                  aMonth[0][d].num = 7
-                  aMonth[0][d].title = '连续签到30天以上'
                 }
+                // } else if (day ==30) {
+                //   aMonth[0][d].num = 7
+                //   aMonth[0][d].title = '连续签到30天'
+                // } else if (day>30){
+                //   aMonth[0][d].num = 7
+                //   aMonth[0][d].title = '连续签到30天以上'
+                // }
                 // if (showTime + iVarDate == nowTime) {
                 //   aMonth[0][d].className = 'haha2'
                 // }
@@ -123,19 +124,20 @@ var yang_date = {
                       if (day == 1) {
                         aMonth[w][d].num = 1
                         aMonth[w][d].title = '首次签到'
+                      } else if (day == 3) {
+                        aMonth[w][d].num = 2
+                        aMonth[w][d].title = '连续签到3天'
                       } else if (day == 7) {
                         aMonth[w][d].num = 3
                         aMonth[w][d].title = '连续签到7天'
-                      } else if (day == 15) {
-                        aMonth[w][d].num = 5
-                        aMonth[w][d].title = '连续签到15天'
-                      } else if (day==30) {
-                        aMonth[w][d].num = 7
-                        aMonth[w][d].title = '连续签到30天'
-                      } else if (day > 30) {
-                        aMonth[w][d].num = 7
-                        aMonth[w][d].title = '连续签到30天以上'
-                      }
+                      } 
+                      // else if (day==30) {
+                      //   aMonth[w][d].num = 7
+                      //   aMonth[w][d].title = '连续签到30天'
+                      // } else if (day > 30) {
+                      //   aMonth[w][d].num = 7
+                      //   aMonth[w][d].title = '连续签到30天以上'
+                      // }
                       
                     }
                   }

@@ -38,7 +38,7 @@ button::after {
 }
 .headers_wrapper {
     width: 580rpx;
-    height: 200rpx;
+    height: 170rpx;
     /* background: linear-gradient(to right, #48fefe, #09dbdb); */
     overflow: hidden;
     zoom: 1;
@@ -200,7 +200,7 @@ button::after {
     overflow: hidden;
     margin: 0 10rpx;
     zoom: 1;
-    height: 90rpx;
+    /* height: 90rpx; */
 }
 
 .day_list {
@@ -421,4 +421,18 @@ button::after {
   background: url('https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/icon1_03@2x.png') no-repeat center center;
   background-size: 70%;
   color: transparent;
+}
+.closeBtn2{
+  position: absolute;
+  right:0;
+  top:0rpx;
+  z-index: 100;
+  background: transparent;
+  padding: 0;
+  line-height: 0;
+  /* width: 100rpx; */
+}
+.closeBtn2 image{
+  width: 50rpx;
+ 
 }

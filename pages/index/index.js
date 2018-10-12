@@ -57,13 +57,13 @@ Page({
     this.getNoticeNumRequst() // 获取公告
     Event.on('didLogin', this.didLogin, this);
   },
-  initDateSgin() { // 首次弹出公告以后 每日第一次进入弹出日历
+  initDateSgin(isNeverHasNotice) { // 首次弹出公告以后 每日第一次进入弹出日历
     let notice = Storage.getIsShowNotice() || false
     let isSginDate = Storage.getTodaySign() || false
     let day = new Date().toLocaleDateString()
     let { isAcitivityStart, isAcitivityPause, isAcitivityEnd } = this.data
     // 活动开始了 未暂停 未结束 已经首次显示过公告 当前日期与缓存日期不一致 弹出日历
-    if (isAcitivityStart && !isAcitivityPause && !isAcitivityEnd && notice && !(isSginDate == day)) {
+    if (isAcitivityStart && !isAcitivityPause && !isAcitivityEnd && (notice || isNeverHasNotice )&& !(isSginDate == day) ) {
       this.closeView()
     }
   },
@@ -215,7 +215,7 @@ Page({
       Tool.showAlert('活动已暂停')
     } else {
       if (this.data.userId == '' || this.data.userId == null) {
-        this.getIsLogin() // 
+        this.getIsLogin()  
         return
       }
       if (this.data.code === '' || this.data.code === null) {
@@ -230,7 +230,8 @@ Page({
         };
         let r = RequestFactory.SecurityCodeRequest(data);
         r.finishBlock = (req) => {
-          Tool.showSuccessToast('兑换成功')
+          Tool.showAlert('防伪码验证成功')
+          // Tool.showSuccessToast('')
           this.setData({
             isPlusNumber: true,
             disabled: true
@@ -518,6 +519,10 @@ Page({
         if (isNotice) {
           this.selectComponent("#showNotice").noticeRequestHttp()
         }
+      } else {
+        if (!Storage.getIsShowNotice()){ // 从来没有弹出公告过 
+          this.initDateSgin(true)
+        }
       }
     };
     Tool.showErrMsg(r);
@@ -535,7 +540,7 @@ Page({
   },
   shakeBoxAwardClicked(){ // 中奖以后点击查看我的奖品的
     this.closeBindshakeBox()
-    this.awardClicked()
+    Tool.navigateTo('/pages/my/award/award-goods/award-goods')
   },
   didLogin() { // 获取 token
     this.selectComponent("#topBar").getUserId()

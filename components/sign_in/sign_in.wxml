@@ -98,10 +98,10 @@
       <text class="headersTitle">签到规则</text>
       </view>
       <view class="for_headerright">
-        <text class="fontSet">1.首次签到可获得1次抽奖机会</text>
-        <text class="fontSet">2.连续签到7天可获得3次免费抽奖机会</text>
-        <text class="fontSet">3.连续签到15天可获得5次免费抽奖机会</text>
-        <text class="fontSet">4.连续签到30天可获得7次免费抽奖机会</text>
+        <text class="fontSet">1.首次签到即可获赠1次抽奖机会</text>
+        <text class="fontSet">2.连续签到3天可再次获赠2次抽奖机会</text>
+        <text class="fontSet">3.连续签到7天可再次获赠3次抽奖机会</text>
+        <!-- <text class="fontSet">4.连续签到30天可获得7次免费抽奖机会</text> -->
       </view>
   </view>
 
@@ -122,14 +122,14 @@
       </view>
     </view>
       <!-- 关闭日历 -->
-      <button wx:if='{{!isAuthorize&&!visiable}}' class='closeBtn'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        <image src="../../img/close-x.png"></image>
+      <button wx:if='{{!isAuthorize&&!visiable}}' class='closeBtn2'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image src="../../img/close-1.png" mode='widthFix'></image>
       </button>
-      <button wx:elif='{{!isAuthorize&&visiable}}' open-type="getUserInfo" class='closeBtn' bindgetuserinfo="agreeGetUser" lang="zh_CN">
-        <image src="../../img/close-x.png"></image>
+      <button wx:elif='{{!isAuthorize&&visiable}}' open-type="getUserInfo" class='closeBtn2' bindgetuserinfo="agreeGetUser" lang="zh_CN">
+        <image src="../../img/close-1.png" mode='widthFix'></image>
       </button>
-      <view wx:else class="closeBtn" bindtap='closeView'>  
-        <image src="../../img/close-x.png"></image>
+      <view wx:else class="closeBtn2" bindtap='closeView'>  
+        <image src="../../img/close-1.png" mode='widthFix'></image>
       </view>    
     </view>           
   </view>

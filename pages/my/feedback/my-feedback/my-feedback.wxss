@@ -65,3 +65,6 @@
   background-image: url(https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/wait-icon.png);
   color: #ffa200;
 }
+.no-result{
+  margin-top: 200rpx;
+}

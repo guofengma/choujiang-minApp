@@ -48,3 +48,6 @@
 .iPhoneX-line{
   background-color:#da2221;
 }
+.no-result{
+  margin-top: 200rpx;
+}
