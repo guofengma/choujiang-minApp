@@ -1,3 +1,4 @@
+@import "/components/iPhoneX-line/iPhoneX-line";
 page{
   height: 100%;
   background-color:#F8F8F8;

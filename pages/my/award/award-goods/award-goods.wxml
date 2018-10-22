@@ -1,5 +1,5 @@
 <import src='/components/logo-bar/logo-bar.wxml' />
-
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
 <view class='award-goods-page boxSize'>
   <!-- <view class='fixed-top'> -->
     <top-bar/>
@@ -31,8 +31,11 @@
   </view>
   <view class='sub-bar whiteBg {{isIPhoneX.isIPhoneX? "sub-bar-x":""}}' wx:if='{{lists.length>0}}'>
     <view class='redBg sub-btn fr flexR font-26' catchtap='submitClicked' >提交</view>
+    <!--适配iPhone X  -->
+    <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" /> 
   </view>
 </view>
+
 <!-- 要修改样式 -->
 <!-- <bottom-bar index="0"/> -->
 
