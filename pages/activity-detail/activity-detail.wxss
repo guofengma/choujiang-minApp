@@ -1,6 +1,7 @@
 @import "/components/iPhoneX-line/iPhoneX-line";
 image{
-  width: 100%
+  width: 100%;
+  vertical-align: top;
 }
 .fixed-top,.detail{
   height: 100%;
