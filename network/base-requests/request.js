@@ -160,7 +160,8 @@ export default class Request {
                   global.Tool.showAlert('请求失败，请稍后重试')
               }
           },
-          complete: function() {
+          complete: function(res) {
+            //console.log(res)
               that.requestStatus = RequestStatus.finish;
               that.completeBlock(that);
 

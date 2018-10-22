@@ -781,7 +781,8 @@ export default class Tool {
     }
 
   static formatName(name) {
-    return name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "")
+    return name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "口")
+    // return name
   }
 
 }
