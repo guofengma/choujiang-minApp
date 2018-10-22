@@ -46,7 +46,8 @@
   border-bottom: 1rpx solid #eee;
 }
 .sub-bar-x{
-  bottom: 135rpx;
+  /* bottom: 135rpx; */
+  bottom: 34rpx;
 }
 .sub-btn{
   width: 190rpx;

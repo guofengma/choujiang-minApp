@@ -7,6 +7,7 @@ Page({
    */
   data: {
     line:true,
+    disabled:false,
     content:'', // 所在区域拼接结果
     navbar:['新增地址','修改地址'],
     addressType:0, // 1新建地址 2修改地址
@@ -97,12 +98,19 @@ Page({
     } else if (this.data.addressType == 2) {
       r = RequestFactory.updateUserAddress(params);
     }
-    
+    this.setData({
+      disabled:true
+    })
     r.finishBlock = (req) => {
       //跳转到地址列表页面
       this.successCallBack("添加成功")
 
     };
+    // r.completeBlock = (req) => {
+    //   this.setData({
+    //     disabled: false
+    //   })
+    // };
     Tool.showErrMsg(r)
     r.addToQueue();
   },

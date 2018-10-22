@@ -12,7 +12,10 @@
       </view>
     </view>
   </block>
-
+  <view  class='no-result flexC' wx:if='{{addressList.length==0}}'>
+      <image src='https://dnlcjxt.oss-cn-hangzhou.aliyuncs.com/xcx/icon1_03.png' mode='widthFix'></image>
+      <view class='font-26 gray'>暂无地址哦~</view>
+  </view>
   <view class='default-btn {{isIPhoneX.className}}' catchtap='goPage'>管理</view>
 </view>
 <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

@@ -219,10 +219,7 @@ Page({
         return
       }
       if (this.data.code === '' || this.data.code === null) {
-        wx.showModal({
-          title: '',
-          content: '请输入16位防伪码',
-        })
+        Tool.showAlert('请输入16位防伪码')
       } else {
         let data = {
           activityId: Storage.getActivityId() || '',

@@ -31,7 +31,9 @@ Page({
       if (datas.resultCount > 0) {
         datas.data.forEach((item) => {
           item.createTime = Tool.formatTime(item.create_time)
+          item.isSelect = false
         })
+        // lists.push({ ...datas.data[0] })
         this.setData({
           lists: lists.concat(datas.data),
           totalPage: datas.total
@@ -56,8 +58,9 @@ Page({
   },
   chooseClicked(e){
     let index = e.currentTarget.dataset.index
+    console.log(index)
     let {lists} = this.data
-    lists.forEach((item)=>{
+    lists.forEach((item,index0)=>{
       item.isSelect = false
     })
     lists[index].isSelect = !lists[index].isSelect
