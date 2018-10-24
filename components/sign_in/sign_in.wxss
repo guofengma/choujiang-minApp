@@ -1,7 +1,9 @@
 button::after {
     border: none;
 }
-
+image{
+  height: auto;
+}
 .btn-qiandao {
   width: 230rpx;
   line-height: 80rpx;

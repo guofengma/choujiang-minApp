@@ -230,6 +230,7 @@ Page({
           Tool.showAlert('防伪码验证成功')
           // Tool.showSuccessToast('')
           this.setData({
+            code:'',
             isPlusNumber: true,
             disabled: true
           })
@@ -544,7 +545,13 @@ Page({
     let callBack = () => { }
     if (this.data.activityId) {
       this.getIsNumberHttp()
-      this.initDateSgin()
+      if (!this.data.userInfo.signDate){
+        this.initDateSgin()
+      }else{
+        this.setData({
+          isAuthorize: true,
+        })
+      }
     } else {
       this.getActivtyId(callBack)
     }
@@ -585,6 +592,17 @@ Page({
     }
   },
   requetLogin() { // 登录
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        let code = res.code
+        if (code) {
+          this.registerUser(code)
+        }
+      }
+    })
+  },
+  registerUser(code){
     let params = {
       encryptedData: this.data.encryptedData,
       iv: this.data.iv,
@@ -592,10 +610,12 @@ Page({
       name: Tool.formatName(this.data.userInfo.nickName),
       headImgUrl: this.data.userInfo.avatarUrl,
       loginAddress: Storage.getLocation() || '',
-      sex: this.data.userInfo.gender
+      sex: this.data.userInfo.gender,
+      code:code,
     }
     let r = global.RequestFactory.appWechatLogin(params);
     r.finishBlock = (req) => {
+      global.Storage.setAuthorize(true)
       Tool.loginOpt(req)
     }
     Tool.showErrMsg(r)

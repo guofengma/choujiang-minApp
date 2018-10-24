@@ -72,6 +72,7 @@ App({
   },
   toLogin(code) {
     if (!code) return
+
     let params = {
       code: code,
       loginAddress: this.globalData.location || ''
@@ -126,8 +127,11 @@ App({
         this.globalData.location = address.country+ address.province + address.city + address.district
         Storage.setLocation(this.globalData.location)
       }
+      
+    }
+    let comCallBack = ()=>{
       this.getUserInfos(this.globalData.code)
     }
-    Tool.queryLocation(callBack)
+    Tool.queryLocation(callBack, comCallBack)
   },
 })

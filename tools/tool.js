@@ -13,7 +13,7 @@ let __instance = (function () {
     return (newInstance) => {
         if (newInstance) instance = newInstance;
         return instance;
-    }
+  }
 }());
 
 export default class Tool {
@@ -781,8 +781,8 @@ export default class Tool {
     }
 
   static formatName(name) {
-    return name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "口")
-    // return name
+    // return name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "口")
+    return name
   }
 
 }

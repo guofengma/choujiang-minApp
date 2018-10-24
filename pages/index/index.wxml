@@ -12,7 +12,7 @@
     isAcitivityPause = '{{isAcitivityPause}}'
     bind:getIsNumberHttp = 'getIsNumberHttp'
     bind:getPhoneNumber="getPhoneNumber" 
-    bind:agreeGetUser="agreeGetUser" wx:if='{{isTrue}}'>
+    bind:agreeGetUser="agreeGetUser" >
 </sign-in>
 <notice wx:if="{{isNotice}}"  bind:showNotice='showNotice' id='showNotice'></notice>
 <!-- <audio id="myAudio" style='display:none'></audio> -->
@@ -45,7 +45,7 @@
     <view bindtap='bindBlur' wx:if="{{isDisplay}}" class="modelViewInput">
       请输入16位防伪码
     </view>
-      <input class="security-code" wx:else="{{disabled}}" bindfocus='bindFocus' placeholder='请输入16位防伪码'  maxlength="16" bindinput="bindinputCode"></input>
+      <input class="security-code" wx:else="{{disabled}}" bindfocus='bindFocus' placeholder='请输入16位防伪码'  maxlength="16" bindinput="bindinputCode" value='{{code}}'></input>
       <view class="securit-btn" bindtap='SecurityCodeRequestHttp'>提交</view>
     </view>
     <view class="draw-number">

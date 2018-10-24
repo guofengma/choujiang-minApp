@@ -326,8 +326,9 @@ Component({
       this.triggerEvent('getPhoneNumber', e.detail)
     },
     agreeGetUser(e){
+      e.detail.userInfo.signDate ='signDate'
       this.triggerEvent('agreeGetUser', e.detail)
-      if(e.target.dataset.index!=1){
+      if(e.target.dataset.index==999){
         this.closeView()
       }
     },

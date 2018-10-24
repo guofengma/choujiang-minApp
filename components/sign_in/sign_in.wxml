@@ -125,7 +125,7 @@
       <button wx:if='{{!isAuthorize&&!visiable}}' class='closeBtn2'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
         <image src="../../img/close-1.png" mode='widthFix'></image>
       </button>
-      <button wx:elif='{{!isAuthorize&&visiable}}' open-type="getUserInfo" class='closeBtn2' bindgetuserinfo="agreeGetUser" lang="zh_CN">
+      <button wx:elif='{{!isAuthorize&&visiable}}' open-type="getUserInfo" class='closeBtn2' bindgetuserinfo="agreeGetUser" lang="zh_CN" data-index='{{999}}'>
         <image src="../../img/close-1.png" mode='widthFix'></image>
       </button>
       <view wx:else class="closeBtn2" bindtap='closeView'>  

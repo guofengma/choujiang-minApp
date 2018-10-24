@@ -15,7 +15,7 @@
       <view class='right'>
         <view>{{list.award_name}}</view>
         <view>描述：{{list.description}}</view>
-        <view class='yellow'>发货时间：承诺24小时</view>
+        <view class='yellow'>发货时间：一周内发货</view>
         <view>中奖码：{{list.securitycode}}</view>
         <view>中奖时间：{{list.createTime}}</view>
       </view>
