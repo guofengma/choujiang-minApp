@@ -2,9 +2,10 @@
 
 <top-bar/>
 <view class='my'>
-  <view class='user-img-view whiteBg'>
+  <view class='user-img-view whiteBg font-30 ellipsis'>
     <image src='{{userInfos.headImgUrl || "/img/default-user.png"}}' class='userImg'></image>
-    <text class='font-30'>{{userInfos.name}}</text>
+    {{userInfos.name}}
+    <!-- <text class='font-30'>{{userInfos.name}}</text> -->
   </view>
   <block wx:for='{{datas}}' wx:key='unique'>
     <view class='group-line whiteBg' catchtap='cellClicked' data-page='{{item.page}}'>

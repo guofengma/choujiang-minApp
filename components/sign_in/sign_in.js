@@ -66,7 +66,9 @@ Component({
       } else {
         timeData = month
       }
-      // console.log(timeData)
+      if (preMonth){
+        timeData = preMonth
+      }
       let data = {
         activityId: Storage.getActivityId() || '',
         yearsMonth: timeData
@@ -232,6 +234,7 @@ Component({
     sign_prev: function () {
       // console.log("上一月");
       var showMonth = this.data.showMonth;
+      console.log(showMonth)
       var todayMonth = this.data.todayMonth;
       if (showMonth == "1") {
         var showMonth = "12";
@@ -240,7 +243,7 @@ Component({
         var showMonth = parseInt(this.data.showMonth) - 1;
         var showYear = this.data.showYear;
       }
-      if (parseInt(todayMonth - 3) == showMonth) {
+      if (parseInt(todayMonth - 10) == showMonth) {
         wx.showToast({
           title: '不能查看更多了',
           icon: 'loading',
@@ -249,17 +252,19 @@ Component({
         return;
       }
       var that = this;
+     
       if (showMonth < 10) {
         var showMonths = "0" + showMonth;
       } else {
-        var showMonths = todayMonth;
+        var showMonths = showMonth;
       }
+      console.log(showMonths)
       var godates = showYear + "-" + showMonths;
-      let preMonth = showYear + "-" + showMonths + "-01";
-      // console.log(godates)
+      let preMonth = showYear + "-" + showMonths;
       this.signListRequestHttp(godates, preMonth)
     },
     sign_next: function () {
+      console.log('next')
       // console.log("下一月");
       var showMonth = this.data.showMonth;
       var todayMonth = this.data.todayMonth;
@@ -282,10 +287,10 @@ Component({
       if (showMonth < 10) {
         var showMonths = "0" + showMonth;
       } else {
-        var showMonths = todayMonth;
+        var showMonths = showMonth;
       }
       var godates = showYear + "-" + showMonths;
-      let preMonth = showYear + "-" + showMonths + "-01";
+      let preMonth = showYear + "-" + showMonths;
       this.signListRequestHttp(godates, preMonth)
     },
     signRequestHttp() { // 签到

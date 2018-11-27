@@ -4,11 +4,11 @@
   width: 120rpx;
   height: 120rpx;
   margin-right: 22rpx;
+  vertical-align: middle
 }
 .user-img-view{
   height: 150rpx;
-  display: flex;
-  align-items: center; 
+  line-height: 150rpx;
   margin: 40rpx 0;
 }
 .my>view{
